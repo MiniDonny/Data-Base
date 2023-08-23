@@ -60,5 +60,11 @@ GROUP BY MONTH(r.rental_date);
 /*Generar un reporte que responda a la pregunta: ¿cuáles son los 5 inventarios más alquilados? 
 (columna inventory_id en la tabla rental). Para cada una de ellas indicar la cantidad de alquileres.
 */
-
+SELECT i.inventory_id AS inventarios , COUNT(r.rental_id) AS cantidad_alquileres
+FROM rental r
+JOIN inventory i 
+ON i.inventory_id = r.inventory_id
+GROUP BY i.inventory_id
+ORDER BY COUNT(r.rental_id) DESC
+LIMIT 5;
 
