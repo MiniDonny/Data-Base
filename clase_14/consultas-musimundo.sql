@@ -43,7 +43,21 @@ FROM facturas
 WHERE pais_de_facturacion LIKE 'Canada%' 
 GROUP BY pais_de_facturacion;
 /*Modificar el listado del punto (a) mostrando únicamente las ciudades con una facturación mayor a 38.*/
+SELECT ciudad_de_facturacion, SUM(id) AS total_facturado
+FROM facturas
+GROUP BY ciudad_de_facturacion
+HAVING SUM(id) > 38;
 /*Modificar el listado del punto (a) agrupando la facturación por país, y luego por ciudad.*/
-/*6. Canciones / Géneros*/
+SELECT pais_de_facturacion , ciudad_de_facturacion, SUM(id) AS total_facturado
+FROM facturas
+GROUP BY pais_de_facturacion, ciudad_de_facturacion 
+ORDER BY pais_de_facturacion,ciudad_de_facturacion DESC;
+/*Canciones / Géneros*/
 /*Listar la duración mínima, máxima y promedio de las canciones. */
+SELECT MAX(milisegundos) AS maxima_duracion, MIN(milisegundos) AS minima_duracion, AVG(milisegundos) AS promerio_duracion
+FROM canciones;
 /*Modificar el punto (a) mostrando la información agrupada por género.*/
+SELECT g.nombre, MAX(milisegundos) AS maxima_duracion, MIN(milisegundos) AS minima_duracion, AVG(milisegundos) AS promerio_duracion
+FROM canciones AS c
+INNER JOIN generos AS g ON g.id = c.id_genero
+GROUP BY g.nombre;
