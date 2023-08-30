@@ -1,4 +1,5 @@
 /*Consignas*/
+
 /*Clientes*/
 /*¿Cuántos clientes existen?*/
 SELECT COUNT(ClienteID) AS total_clientes
@@ -38,6 +39,7 @@ SELECT EmpleadoID, COUNT(FacturaID)
 FROM facturas
 GROUP BY EmpleadoID
 HAVING COUNT(FacturaID) >= 156;
+
 /*Factura detalle*/
 /*¿Cuál es el producto que aparece en más líneas de la tabla Factura Detalle?*/
 SELECT ProductoID, COUNT(ProductoID) AS total
@@ -46,12 +48,20 @@ GROUP BY ProductoID
 ORDER BY COUNT(ProductoID) DESC
 LIMIT 1;
 /*¿Cuál es el total facturado? Considerar que el total facturado es la suma de cantidad por precio unitario.*/
-SELECT
-FROM 
+SELECT SUM(PrecioUnitario * Cantidad) AS total_facturado
+FROM facturadetalle;
 /*¿Cuál es el total facturado para los productos ID entre 30 y 50?*/
+SELECT ProductoID AS ID,SUM(PrecioUnitario * Cantidad) AS total_facturado
+FROM facturadetalle
+WHERE ProductoID BETWEEN 30 AND 50
+GROUP BY ProductoID;
 /*¿Cuál es el precio unitario promedio de cada producto?*/
+SELECT ProductoID,AVG(PrecioUnitario) AS promedio_precio_unitario
+FROM facturadetalle
+GROUP BY ProductoID;
 /*¿Cuál es el precio unitario máximo?*/
-
+SELECT MAX(PrecioUnitario) AS precio_unitario_maximo
+FROM facturadetalle;
 
 
 
