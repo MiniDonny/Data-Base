@@ -1,11 +1,4 @@
-/*Consultas queries XL parte I - GROUP BY
-Vamos a practicar sobre consultas SELECT, enfocándonos en group by, having y distinct.
-Tips:
-Cada enunciado se corresponde con una consulta SELECT.
-Recordá ir guardando las consultas. SQL.*/
-
 /*Consignas*/
-
 /*Clientes*/
 /*¿Cuántos clientes existen?*/
 SELECT COUNT(ClienteID) AS total_clientes
@@ -53,7 +46,8 @@ GROUP BY ProductoID
 ORDER BY COUNT(ProductoID) DESC
 LIMIT 1;
 /*¿Cuál es el total facturado? Considerar que el total facturado es la suma de cantidad por precio unitario.*/
-
+SELECT
+FROM 
 /*¿Cuál es el total facturado para los productos ID entre 30 y 50?*/
 /*¿Cuál es el precio unitario promedio de cada producto?*/
 /*¿Cuál es el precio unitario máximo?*/
